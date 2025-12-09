@@ -1,10 +1,10 @@
 const { Storage } = require('@google-cloud/storage');
 require('dotenv').config();
 const path = require('path');
-// const storage = new Storage({
-//   keyFilename: path.join(__dirname, '../serviceAccount.json'),
-// });
-const storage = new Storage();
+const storage = new Storage({
+  keyFilename: path.join(__dirname, '../serviceAccount.json'),
+});
+// const storage = new Storage();
 const bucketName = process.env.GCP_BUCKET_NAME;  // Set di .env
 
 async function uploadImageToGcp(imageBuffer, imageName) {
@@ -19,7 +19,7 @@ async function uploadImageToGcp(imageBuffer, imageName) {
 
   await file.save(imageBuffer, {
     metadata: { contentType: 'image/jpeg' },  // sesuaikan jika perlu
-    public: true,
+    // public: true,
   });
 
   // Buat URL publik (format)
