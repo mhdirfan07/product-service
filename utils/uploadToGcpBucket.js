@@ -1,9 +1,11 @@
 const { Storage } = require('@google-cloud/storage');
 require('dotenv').config();
 const path = require('path');
-const storage = new Storage({
-  keyFilename: path.join(__dirname, '../serviceAccount.json'),
-});
+// const storage = new Storage({
+//   keyFilename: path.join(__dirname, '../serviceAccount.json'),
+// });
+
+const storage = new Storage();
 // const storage = new Storage();
 const bucketName = process.env.GCP_BUCKET_NAME;  // Set di .env
 
